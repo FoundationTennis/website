@@ -1,0 +1,97 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Foundation Tennis - Professional tennis coaching in Perth, Western Australia" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Foundation Tennis</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Foundation Tennis</a>
+        <ul>
+          <li><a href="/programs">Programs</a></li>
+          <li><a href="/coaches">Coaches</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>&copy; {new Date().getFullYear()} Foundation Tennis. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :root {
+    --primary: #1a5f2a;
+    --secondary: #f0f0f0;
+    --text: #333;
+  }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+  }
+
+  header {
+    background: var(--primary);
+    padding: 1rem 2rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul a {
+    font-weight: normal;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  footer {
+    background: var(--secondary);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+  }
+</style>

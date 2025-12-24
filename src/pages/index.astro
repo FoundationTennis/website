@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Home" description="Foundation Tennis - Professional tennis coaching for all ages in Perth, Western Australia">
+  <section class="hero">
+    <h1>Foundation Tennis</h1>
+    <p>Professional tennis coaching for all ages in Perth, Western Australia</p>
+    <a href="/programs" class="cta">View Programs</a>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h2>Junior Programs</h2>
+      <p>Tennis Australia Hotshots pathway for ages 3-12</p>
+    </div>
+    <div class="feature">
+      <h2>Adult Coaching</h2>
+      <p>Group and private lessons for all skill levels</p>
+    </div>
+    <div class="feature">
+      <h2>Competition Squads</h2>
+      <p>Match play and tournament preparation</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #1a5f2a 0%, #2d8b40 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta {
+    display: inline-block;
+    background: white;
+    color: #1a5f2a;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .cta:hover {
+    background: #f0f0f0;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .feature {
+    padding: 2rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .feature h2 {
+    color: #1a5f2a;
+    margin-bottom: 0.5rem;
+  }
+</style>
