@@ -1,79 +1,291 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const programs = await getCollection('programs');
+const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
 ---
 
-<BaseLayout title="Home" description="Foundation Tennis - Professional tennis coaching for all ages in Perth, Western Australia">
+<BaseLayout
+  title="Kids Tennis Coaching Somerton Park"
+  description="Foundation Tennis helps kids discover the joy of tennis in Somerton Park, Adelaide. Fun group lessons, development squads, and a community that keeps players coming back."
+>
   <section class="hero">
-    <h1>Foundation Tennis</h1>
-    <p>Professional tennis coaching for all ages in Perth, Western Australia</p>
-    <a href="/programs" class="cta">View Programs</a>
+    <div class="hero-content">
+      <h1>Where Kids Fall in Love with Tennis</h1>
+      <p>Fun, growth-focused coaching in Somerton Park. From first rally to match play, your child develops skills and confidence in a community that cares.</p>
+      <div class="hero-ctas">
+        <a href="/contact" class="cta-primary">Book a Free Trial</a>
+        <a href="/programs" class="cta-secondary">View Programs</a>
+      </div>
+    </div>
   </section>
 
-  <section class="features">
-    <div class="feature">
-      <h2>Junior Programs</h2>
-      <p>Tennis Australia Hotshots pathway for ages 3-12</p>
+  <section class="values">
+    <h2>Why Parents Choose Foundation Tennis</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <h3>Growth Over Winning</h3>
+        <p>Every player improves at their own pace. We celebrate progress as athletes and as people.</p>
+      </div>
+      <div class="value-card">
+        <h3>Fun Keeps Kids Playing</h3>
+        <p>Energy, games, and laughter are part of every lesson. When tennis is enjoyable, kids want more.</p>
+      </div>
+      <div class="value-card">
+        <h3>Community Matters</h3>
+        <p>Players support each other. Parents are part of the journey. Families belong here.</p>
+      </div>
+      <div class="value-card">
+        <h3>Kids Take Ownership</h3>
+        <p>Players choose their own goals. They decide how seriously they want to play. Tennis belongs to them.</p>
+      </div>
     </div>
-    <div class="feature">
-      <h2>Adult Coaching</h2>
-      <p>Group and private lessons for all skill levels</p>
+  </section>
+
+  <section class="programs-preview">
+    <h2>Programs for Every Stage</h2>
+    <p class="section-intro">From beginners learning to rally to competitive players preparing for tournaments.</p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <h3>Blue & Red Groups</h3>
+        <p>Ages 5-8. First steps in tennis with smaller courts, softer balls, and lots of fun.</p>
+        <p class="price">From $120/term</p>
+      </div>
+      <div class="program-card">
+        <h3>Orange & Green Groups</h3>
+        <p>Building technique and match play skills as players progress through the pathway.</p>
+        <p class="price">$160/term</p>
+      </div>
+      <div class="program-card">
+        <h3>Yellow Groups</h3>
+        <p>Full court tennis for developing players ready for longer rallies and match tactics.</p>
+        <p class="price">$200/term</p>
+      </div>
+      <div class="program-card featured">
+        <h3>Development Package</h3>
+        <p>For serious players. Groups, squads, video analysis, and tournament support.</p>
+        <p class="price">$500/term</p>
+      </div>
     </div>
-    <div class="feature">
-      <h2>Competition Squads</h2>
-      <p>Match play and tournament preparation</p>
+    <a href="/programs" class="view-all">View All Programs →</a>
+  </section>
+
+  <section class="testimonial-placeholder">
+    <h2>What Parents Say</h2>
+    <div class="testimonial-card">
+      <p class="testimonial-text">"Testimonials coming soon. We're collecting feedback from our amazing families."</p>
+      <p class="testimonial-author">— Foundation Tennis Families</p>
     </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready to Start?</h2>
+    <p>Book a free trial lesson and see why kids love Foundation Tennis.</p>
+    <a href="/contact" class="cta-primary">Book a Free Trial</a>
   </section>
 </BaseLayout>
 
 <style>
   .hero {
-    text-align: center;
-    padding: 4rem 2rem;
-    background: linear-gradient(135deg, #1a5f2a 0%, #2d8b40 100%);
+    background: linear-gradient(135deg, var(--sunset-coral) 0%, #d66a3d 100%);
     color: white;
-    border-radius: 8px;
-    margin-bottom: 3rem;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   .hero h1 {
     font-size: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
   }
 
   .hero p {
     font-size: 1.25rem;
     margin-bottom: 2rem;
+    opacity: 0.95;
   }
 
-  .cta {
-    display: inline-block;
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-primary {
     background: white;
-    color: #1a5f2a;
+    color: var(--sunset-coral);
     padding: 1rem 2rem;
     border-radius: 4px;
+    font-weight: 700;
     text-decoration: none;
-    font-weight: bold;
+    transition: transform 0.2s;
   }
 
-  .cta:hover {
-    background: #f0f0f0;
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
   }
 
-  .features {
+  .cta-secondary {
+    background: transparent;
+    color: white;
+    padding: 1rem 2rem;
+    border: 2px solid white;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .cta-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    text-decoration: none;
+  }
+
+  section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .section-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  .values-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    margin-top: 2rem;
   }
 
-  .feature {
+  .value-card {
+    background: white;
     padding: 2rem;
-    background: #f8f8f8;
     border-radius: 8px;
-    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 
-  .feature h2 {
-    color: #1a5f2a;
-    margin-bottom: 0.5rem;
+  .value-card h3 {
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+  }
+
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .program-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--primary);
+  }
+
+  .program-card.featured {
+    border-left-color: var(--accent);
+    background: linear-gradient(to right, rgba(107, 179, 217, 0.05), white);
+  }
+
+  .program-card h3 {
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .program-card .price {
+    color: var(--primary);
+    font-weight: 700;
+    margin-top: 1rem;
+  }
+
+  .view-all {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  .testimonial-placeholder {
+    background: white;
+    border-radius: 8px;
+    margin: 2rem auto;
+  }
+
+  .testimonial-card {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .testimonial-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-author {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .cta-section {
+    text-align: center;
+    background: var(--text);
+    color: white;
+    border-radius: 8px;
+    margin: 2rem auto;
+  }
+
+  .cta-section h2 {
+    color: white;
+  }
+
+  .cta-section p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .cta-section .cta-primary {
+    background: var(--primary);
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+
+    section {
+      padding: 3rem 1rem;
+    }
   }
 </style>

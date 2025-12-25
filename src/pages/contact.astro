@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact Us"
+  description="Get in touch with Foundation Tennis. Book a trial lesson, ask questions, or find us at Somerton Park Tennis Club."
+>
+  <div class="contact-page">
+    <h1>Get in Touch</h1>
+    <p class="intro">Ready to start your child's tennis journey? Book a free trial lesson or ask us anything.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Contact Details</h2>
+
+        <div class="contact-item">
+          <h3>Phone</h3>
+          <p><a href="tel:0431368752">0431 368 752</a></p>
+        </div>
+
+        <div class="contact-item">
+          <h3>Email</h3>
+          <p><a href="mailto:foundationtennis@hotmail.com">foundationtennis@hotmail.com</a></p>
+        </div>
+
+        <div class="contact-item">
+          <h3>Location</h3>
+          <p>Somerton Park Tennis Club</p>
+          <p>28-40 Wilton Ave</p>
+          <p>Somerton Park SA 5044</p>
+        </div>
+
+        <div class="contact-item">
+          <h3>Hours</h3>
+          <p>Weekdays: 3pm - 9:30pm</p>
+          <p>Weekends: 8am - 6pm</p>
+        </div>
+
+        <div class="contact-item">
+          <h3>Follow Us</h3>
+          <p><a href="https://www.facebook.com/foundationtennisdevelopment/" target="_blank" rel="noopener">Facebook</a></p>
+        </div>
+      </div>
+
+      <div class="trial-section">
+        <h2>Book a Free Trial</h2>
+        <p>Your child can join any of our group lessons for a free trial. Here's what to expect:</p>
+
+        <ul>
+          <li>Join a running group lesson at your child's level</li>
+          <li>No obligation - just come and see if they enjoy it</li>
+          <li>Rackets provided if needed</li>
+          <li>Wear comfortable clothes and bring water</li>
+        </ul>
+
+        <p>To book a trial, contact us with:</p>
+        <ul>
+          <li>Your child's name and age</li>
+          <li>Any tennis experience</li>
+          <li>Preferred days/times</li>
+        </ul>
+
+        <div class="cta-box">
+          <p>Call or text us on <strong>0431 368 752</strong> or email <strong>foundationtennis@hotmail.com</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-section">
+      <h2>Find Us</h2>
+      <div class="map-placeholder">
+        <p>Somerton Park Tennis Club</p>
+        <p>28-40 Wilton Ave, Somerton Park SA 5044</p>
+        <a href="https://maps.google.com/?q=28-40+Wilton+Ave+Somerton+Park+SA+5044" target="_blank" rel="noopener" class="map-link">Open in Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .contact-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .intro {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .contact-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-item h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-item p {
+    margin: 0;
+  }
+
+  .contact-item a {
+    color: var(--accent);
+  }
+
+  .trial-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .trial-section ul {
+    margin: 1rem 0;
+    padding-left: 1.25rem;
+  }
+
+  .trial-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-box {
+    background: var(--background);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--primary);
+  }
+
+  .cta-box p {
+    margin: 0;
+  }
+
+  .map-section {
+    margin-top: 2rem;
+  }
+
+  .map-placeholder {
+    background: white;
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .map-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

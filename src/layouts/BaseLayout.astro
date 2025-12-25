@@ -2,58 +2,149 @@
 interface Props {
   title: string;
   description?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  ogTitle?: string;
+  ogDescription?: string;
 }
 
-const { title, description = "Foundation Tennis - Professional tennis coaching in Perth, Western Australia" } = Astro.props;
+const {
+  title,
+  description = "Professional tennis coaching for kids in Somerton Park, Adelaide",
+  metaTitle,
+  metaDescription,
+  ogTitle,
+  ogDescription
+} = Astro.props;
+
+const pageTitle = metaTitle || title;
+const pageDescription = metaDescription || description;
+const socialTitle = ogTitle || pageTitle;
+const socialDescription = ogDescription || pageDescription;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={pageDescription} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={socialDescription} />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} | Foundation Tennis</title>
+    <title>{pageTitle} | Foundation Tennis</title>
   </head>
   <body>
     <header>
       <nav>
-        <a href="/">Foundation Tennis</a>
-        <ul>
+        <a href="/" class="logo">Foundation Tennis</a>
+        <ul class="nav-links">
           <li><a href="/programs">Programs</a></li>
+          <li><a href="/about">About</a></li>
           <li><a href="/coaches">Coaches</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
+        <a href="/contact" class="nav-cta">Book a Trial</a>
       </nav>
     </header>
     <main>
       <slot />
     </main>
     <footer>
-      <p>&copy; {new Date().getFullYear()} Foundation Tennis. All rights reserved.</p>
+      <div class="footer-content">
+        <div class="footer-info">
+          <h3>Foundation Tennis</h3>
+          <p>Somerton Park Tennis Club</p>
+          <p>28-40 Wilton Ave, Somerton Park 5044</p>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact</h3>
+          <p>Phone: 0431 368 752</p>
+          <p>Email: foundationtennis@hotmail.com</p>
+        </div>
+        <div class="footer-hours">
+          <h3>Hours</h3>
+          <p>Weekdays: 3pm - 9:30pm</p>
+          <p>Weekends: 8am - 6pm</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Foundation Tennis. All rights reserved.</p>
+      </div>
     </footer>
   </body>
 </html>
 
-<style>
+<style is:global>
   :root {
-    --primary: #1a5f2a;
-    --secondary: #f0f0f0;
-    --text: #333;
+    /* Brand Colors */
+    --sunset-coral: #E87D4E;
+    --soft-blush: #F4A6B7;
+    --horizon-blue: #6BB3D9;
+    --natural-cream: #F5F2EB;
+    --deep-charcoal: #2C3E50;
+    --pure-white: #FFFFFF;
+
+    /* Semantic */
+    --primary: var(--sunset-coral);
+    --secondary: var(--soft-blush);
+    --accent: var(--horizon-blue);
+    --background: var(--natural-cream);
+    --text: var(--deep-charcoal);
+    --white: var(--pure-white);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   body {
-    font-family: system-ui, -apple-system, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--text);
+    background: var(--background);
+    line-height: 1.6;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+<style>
   header {
-    background: var(--primary);
+    background: var(--white);
     padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
   nav {
@@ -64,34 +155,102 @@ const { title, description = "Foundation Tennis - Professional tennis coaching i
     margin: 0 auto;
   }
 
-  nav a {
-    color: white;
+  .logo {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.5rem;
     text-decoration: none;
-    font-weight: bold;
   }
 
-  nav ul {
+  .nav-links {
     display: flex;
     gap: 2rem;
     list-style: none;
-    margin: 0;
-    padding: 0;
   }
 
-  nav ul a {
-    font-weight: normal;
+  .nav-links a {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .nav-links a:hover {
+    border-bottom-color: var(--primary);
+    text-decoration: none;
+  }
+
+  .nav-cta {
+    background: var(--primary);
+    color: var(--white) !important;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: #d66a3d;
+    text-decoration: none;
   }
 
   main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+    min-height: calc(100vh - 200px);
   }
 
   footer {
-    background: var(--secondary);
-    padding: 2rem;
-    text-align: center;
+    background: var(--text);
+    color: var(--white);
+    padding: 3rem 2rem 1rem;
     margin-top: 4rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+  }
+
+  .footer-content h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .footer-content p {
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 1rem;
+    text-align: center;
+    opacity: 0.7;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .nav-links {
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .nav-cta {
+      order: 2;
+    }
   }
 </style>

@@ -1,0 +1,435 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPrograms = await getCollection('programs');
+const groupPrograms = allPrograms.filter(p => p.id.startsWith('groups/'));
+const otherPrograms = allPrograms.filter(p => !p.id.startsWith('groups/') && !p.id.startsWith('comps/'));
+---
+
+<BaseLayout
+  title="Tennis Programs"
+  description="Tennis programs for all ages and levels. Group lessons, development squads, internal competitions, and private coaching in Somerton Park."
+>
+  <div class="programs-page">
+    <h1>Our Programs</h1>
+    <p class="intro">Designed around how kids actually learn. Every program builds skills through fun, challenge, and plenty of rallies.</p>
+
+    <section class="program-section">
+      <h2>Group Lessons</h2>
+      <p class="section-desc">8-week terms following the Tennis Australia pathway. Smaller courts and softer balls for younger players, progressing to full court tennis.</p>
+
+      <div class="pricing-note">
+        <p><strong>Pricing:</strong> $120/term (30min) | $160/term (45min) | $200/term (60min)</p>
+        <p><strong>Multi-session discount:</strong> $240 (2x 45min) | $300 (2x 60min)</p>
+        <p><strong>10% early bird discount</strong> when you pay in full before term starts</p>
+      </div>
+
+      <div class="programs-grid">
+        <div class="program-card blue">
+          <h3>Blue Group</h3>
+          <div class="program-meta">
+            <span>Ages 5-6</span>
+            <span>30 min</span>
+            <span>$120/term</span>
+          </div>
+          <p>First introduction to tennis. Coordination, basic racket skills, and lots of games.</p>
+          <p class="schedule">Tuesday 3:45-4:15pm</p>
+        </div>
+
+        <div class="program-card red">
+          <h3>Red Group</h3>
+          <div class="program-meta">
+            <span>Ages 5-8</span>
+            <span>45 min</span>
+            <span>$160/term</span>
+          </div>
+          <p>Building rallying skills on the red court. Forehand, backhand, and movement foundations.</p>
+          <p class="schedule">Mon 4:15-5pm | Wed 4:15-5pm</p>
+        </div>
+
+        <div class="program-card orange">
+          <h3>Orange Group</h3>
+          <div class="program-meta">
+            <span>45 min</span>
+            <span>$160/term</span>
+          </div>
+          <p>Longer rallies on the orange court. Developing consistency and court positioning.</p>
+          <p class="schedule">Mon 5-5:45pm | Tue 4:30-5:15pm</p>
+        </div>
+
+        <div class="program-card green">
+          <h3>Green Group</h3>
+          <div class="program-meta">
+            <span>45 min</span>
+            <span>$160/term</span>
+          </div>
+          <p>Transition to the full court with the green ball. Building power and tactics.</p>
+          <p class="schedule">Mon 5:45-6:30pm | Tue 5:15-6pm</p>
+        </div>
+
+        <div class="program-card yellow">
+          <h3>Yellow Group</h3>
+          <div class="program-meta">
+            <span>60 min</span>
+            <span>$200/term</span>
+          </div>
+          <p>Full court tennis with regulation balls. Match play, tactics, and competition prep.</p>
+          <p class="schedule">Mon 6:30-7:30pm | Wed 6:45-7:45pm</p>
+        </div>
+
+        <div class="program-card girls">
+          <h3>Girls Yellow</h3>
+          <div class="program-meta">
+            <span>60 min</span>
+            <span>$200/term</span>
+          </div>
+          <p>Girls-only yellow ball group. Same great coaching in a supportive environment.</p>
+          <p class="schedule">Wed 5:45-6:45pm</p>
+        </div>
+
+        <div class="program-card girls">
+          <h3>Girls Orange/Green</h3>
+          <div class="program-meta">
+            <span>45 min</span>
+            <span>$160/term</span>
+          </div>
+          <p>Girls-only group for orange and green ball players.</p>
+          <p class="schedule">Wed 5-5:45pm</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="program-section featured">
+      <h2>Development Package</h2>
+      <p class="section-desc">For players ready to take their tennis seriously. Our most comprehensive program.</p>
+
+      <div class="development-card">
+        <div class="development-price">
+          <span class="price">$500</span>
+          <span class="period">per 8-week term</span>
+        </div>
+
+        <div class="development-includes">
+          <h4>What's Included</h4>
+          <ul>
+            <li><strong>2 Group Lessons</strong> per week at your level</li>
+            <li><strong>Thursday Development Squads</strong> - intensive skill training</li>
+            <li><strong>Morning Squads</strong> - Tue, Wed, Thu 7-8am</li>
+            <li><strong>Video Analysis</strong> - see your technique in detail</li>
+            <li><strong>Match Analysis</strong> - break down what happened</li>
+            <li><strong>Progress Reports</strong> - track development</li>
+            <li><strong>Tournament Support</strong> - guidance and preparation</li>
+          </ul>
+        </div>
+
+        <div class="squad-times">
+          <h4>Thursday Squad Times</h4>
+          <ul>
+            <li>Red: 4-4:45pm</li>
+            <li>Orange: 4:45-5:30pm</li>
+            <li>Green: 5:30-6:15pm</li>
+            <li>Yellow: 6:15-7:15pm</li>
+            <li>Elite: 7:15-8:30pm</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="program-section">
+      <h2>Internal Competitions</h2>
+      <p class="section-desc">Match play experience in a supportive environment. Learn to compete before entering external tournaments.</p>
+
+      <div class="programs-grid comps">
+        <div class="program-card">
+          <h3>Red Ball Comp</h3>
+          <div class="program-meta">
+            <span>$50/term</span>
+            <span>or $10 casual</span>
+          </div>
+          <p>Saturday 11am-12pm and Friday 4:15-5:15pm. Fun matches for red ball players.</p>
+        </div>
+
+        <div class="program-card">
+          <h3>Transition Comp</h3>
+          <div class="program-meta">
+            <span>$110/term</span>
+          </div>
+          <p>Orange/Green players. Saturday 11am-12:15pm plus Friday 4:15-5:15pm.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="program-section">
+      <h2>School Programs</h2>
+      <p class="section-desc">After-school tennis at local primary schools. A great introduction to tennis with classmates.</p>
+
+      <div class="programs-grid">
+        <div class="program-card">
+          <h3>Paringa Park Primary</h3>
+          <div class="program-meta">
+            <span>Ages 5-8+</span>
+            <span>Red ball</span>
+          </div>
+          <p>Mondays 3:15-4pm in the school gym. 8-week terms starting week 2 of school.</p>
+        </div>
+
+        <div class="program-card">
+          <h3>McAuley Community School</h3>
+          <div class="program-meta">
+            <span>Ages 5-8+</span>
+            <span>Red ball</span>
+          </div>
+          <p>Wednesdays 3:15-4pm on the school courts. 8-week terms starting week 2 of school.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="program-section">
+      <h2>Private Lessons</h2>
+      <p class="section-desc">One-on-one coaching for players wanting focused technical work.</p>
+
+      <div class="private-grid">
+        <div class="coach-private">
+          <h3>Maxim (Head Coach)</h3>
+          <p class="price">$50 / 30 min</p>
+          <p>Limited availability. Development players only.</p>
+        </div>
+        <div class="coach-private">
+          <h3>Zoe (Assistant Head Coach)</h3>
+          <p class="price">$40 / 30 min</p>
+          <p>TA Junior Development qualified.</p>
+        </div>
+        <div class="coach-private">
+          <h3>Sota / George</h3>
+          <p class="price">$30 / 30 min</p>
+          <p>Great for supplementing group training.</p>
+        </div>
+      </div>
+      <p class="private-note">Contact us to book: <a href="tel:0431368752">0431 368 752</a> or <a href="mailto:foundationtennis@hotmail.com">foundationtennis@hotmail.com</a></p>
+    </section>
+
+    <section class="cta-section">
+      <h2>Ready to Join?</h2>
+      <p>Book a free trial lesson and find the right program for your child.</p>
+      <a href="/contact" class="cta-primary">Book a Free Trial</a>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .programs-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .intro {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+  }
+
+  .program-section {
+    margin-bottom: 4rem;
+  }
+
+  .program-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-desc {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-note {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--primary);
+  }
+
+  .pricing-note p {
+    margin: 0.25rem 0;
+  }
+
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .program-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-top: 4px solid var(--primary);
+  }
+
+  .program-card.blue { border-top-color: #3498db; }
+  .program-card.red { border-top-color: #e74c3c; }
+  .program-card.orange { border-top-color: #f39c12; }
+  .program-card.green { border-top-color: #27ae60; }
+  .program-card.yellow { border-top-color: #f1c40f; }
+  .program-card.girls { border-top-color: var(--secondary); }
+
+  .program-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .program-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .program-meta span {
+    background: var(--background);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .schedule {
+    font-size: 0.9rem;
+    color: var(--primary);
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+
+  .program-section.featured {
+    background: linear-gradient(135deg, rgba(107, 179, 217, 0.1) 0%, rgba(232, 125, 78, 0.05) 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .development-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .development-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+  }
+
+  .development-price .price {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .development-price .period {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+
+  .development-includes h4, .squad-times h4 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  .development-includes ul, .squad-times ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .development-includes li, .squad-times li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .private-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .coach-private {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .coach-private .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0.5rem 0;
+  }
+
+  .private-note {
+    text-align: center;
+    color: #666;
+  }
+
+  .cta-section {
+    text-align: center;
+    background: var(--text);
+    color: white;
+    padding: 3rem;
+    border-radius: 8px;
+  }
+
+  .cta-section h2 {
+    color: white;
+  }
+
+  .cta-section p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .cta-primary {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .development-card {
+      grid-template-columns: 1fr;
+    }
+
+    .private-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .program-section.featured {
+      margin-left: -1rem;
+      margin-right: -1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+</style>
