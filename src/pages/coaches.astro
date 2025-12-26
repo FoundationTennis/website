@@ -19,11 +19,20 @@ const coaches = await getCollection('coaches');
         return (
           <article class="coach-card">
             <div class="coach-photo">
-              <div class="photo-placeholder">Photo coming soon</div>
+              <div class="photo-placeholder">
+                <span class="placeholder-icon">👤</span>
+                <span class="placeholder-text">Headshot needed</span>
+                <span class="placeholder-spec">Portrait, 400x400px</span>
+              </div>
             </div>
             <div class="coach-content">
               <h2>{coach.data.name}</h2>
               <p class="coach-title">{coach.data.title}</p>
+              <div class="coach-badges">
+                <span class="coach-badge" title="Tennis Australia Certified">🎾 TA Certified</span>
+                <span class="coach-badge" title="Working with Children Check">✓ WWC</span>
+                <span class="coach-badge" title="First Aid">+ First Aid</span>
+              </div>
               <div class="coach-body">
                 <Content />
               </div>
@@ -88,10 +97,29 @@ const coaches = await getCollection('coaches');
     height: 100%;
     background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+
+  .placeholder-text {
     font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .placeholder-spec {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 0.25rem;
   }
 
   .coach-content h2 {
@@ -102,7 +130,26 @@ const coaches = await getCollection('coaches');
   .coach-title {
     color: var(--primary);
     font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .coach-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
     margin-bottom: 1rem;
+  }
+
+  .coach-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: var(--background);
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--text);
+    font-weight: 500;
   }
 
   .coach-body :global(h1) {

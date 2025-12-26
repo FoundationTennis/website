@@ -15,6 +15,61 @@ const otherPrograms = allPrograms.filter(p => !p.id.startsWith('groups/') && !p.
     <h1>Our Programs</h1>
     <p class="intro">Designed around how kids actually learn. Every program builds skills through fun, challenge, and plenty of rallies.</p>
 
+    <!-- Progression Pathway -->
+    <section class="pathway-section">
+      <h2>The Tennis Australia Pathway</h2>
+      <p class="pathway-desc">Players progress through colour-coded stages based on skill development, not just age.</p>
+
+      <div class="pathway-visual">
+        <div class="pathway-stage blue">
+          <div class="stage-ball">🔵</div>
+          <div class="stage-info">
+            <strong>Blue</strong>
+            <span>Ages 5-6</span>
+            <span class="stage-desc">First steps</span>
+          </div>
+        </div>
+        <div class="pathway-arrow">→</div>
+        <div class="pathway-stage red">
+          <div class="stage-ball">🔴</div>
+          <div class="stage-info">
+            <strong>Red</strong>
+            <span>Ages 5-8</span>
+            <span class="stage-desc">Small court</span>
+          </div>
+        </div>
+        <div class="pathway-arrow">→</div>
+        <div class="pathway-stage orange">
+          <div class="stage-ball">🟠</div>
+          <div class="stage-info">
+            <strong>Orange</strong>
+            <span>Developing</span>
+            <span class="stage-desc">3/4 court</span>
+          </div>
+        </div>
+        <div class="pathway-arrow">→</div>
+        <div class="pathway-stage green">
+          <div class="stage-ball">🟢</div>
+          <div class="stage-info">
+            <strong>Green</strong>
+            <span>Intermediate</span>
+            <span class="stage-desc">Full court</span>
+          </div>
+        </div>
+        <div class="pathway-arrow">→</div>
+        <div class="pathway-stage yellow">
+          <div class="stage-ball">🟡</div>
+          <div class="stage-info">
+            <strong>Yellow</strong>
+            <span>Advanced</span>
+            <span class="stage-desc">Match play</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="pathway-note">Not sure where your child fits? <a href="/contact">Book a trial</a> and we'll assess their level.</p>
+    </section>
+
     <section class="program-section">
       <h2>Group Lessons</h2>
       <p class="section-desc">8-week terms following the Tennis Australia pathway. Smaller courts and softer balls for younger players, progressing to full court tennis.</p>
@@ -233,7 +288,96 @@ const otherPrograms = allPrograms.filter(p => !p.id.startsWith('groups/') && !p.
   .intro {
     font-size: 1.2rem;
     color: #666;
+    margin-bottom: 2rem;
+  }
+
+  /* Pathway Section */
+  .pathway-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
     margin-bottom: 3rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  .pathway-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .pathway-desc {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  .pathway-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .pathway-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 8px;
+    background: var(--background);
+    min-width: 90px;
+    transition: transform 0.2s;
+  }
+
+  .pathway-stage:hover {
+    transform: scale(1.05);
+  }
+
+  .pathway-stage.blue { border-bottom: 3px solid var(--program-blue); }
+  .pathway-stage.red { border-bottom: 3px solid var(--program-red); }
+  .pathway-stage.orange { border-bottom: 3px solid var(--program-orange); }
+  .pathway-stage.green { border-bottom: 3px solid var(--program-green); }
+  .pathway-stage.yellow { border-bottom: 3px solid var(--program-yellow); }
+
+  .stage-ball {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .stage-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .stage-info strong {
+    font-size: 1rem;
+  }
+
+  .stage-desc {
+    color: #666;
+    font-size: 0.75rem;
+  }
+
+  .pathway-arrow {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .pathway-note {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #666;
+  }
+
+  .pathway-note a {
+    color: var(--primary);
+    font-weight: 600;
   }
 
   .program-section {

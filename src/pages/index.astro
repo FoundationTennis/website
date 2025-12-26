@@ -11,6 +11,10 @@ const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
   description="Foundation Tennis helps kids discover the joy of tennis in Somerton Park, Adelaide. Fun group lessons, development squads, and a community that keeps players coming back."
 >
   <section class="hero">
+    <div class="hero-image-placeholder">
+      <span class="placeholder-label">Hero Image Needed</span>
+      <span class="placeholder-desc">Action shot of kids playing tennis at SPTC courts (landscape, 1920x800px)</span>
+    </div>
     <div class="hero-content">
       <h1>Where Kids Fall in Love with Tennis</h1>
       <p>Fun, growth-focused coaching in Somerton Park. From first rally to match play, your child develops skills and confidence in a community that cares.</p>
@@ -100,13 +104,41 @@ const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
   .hero {
     background: linear-gradient(135deg, var(--sunset-coral) 0%, #d66a3d 100%);
     color: white;
-    padding: 5rem 2rem;
+    padding: 0;
     text-align: center;
+    position: relative;
+  }
+
+  .hero-image-placeholder {
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.8) 0%, rgba(44, 62, 80, 0.6) 100%);
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    border: 3px dashed rgba(255,255,255,0.4);
+    margin: 1rem;
+    border-radius: 8px;
+  }
+
+  .placeholder-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+  }
+
+  .placeholder-desc {
+    font-size: 0.95rem;
+    opacity: 0.7;
+    max-width: 400px;
   }
 
   .hero-content {
     max-width: 800px;
     margin: 0 auto;
+    padding: 3rem 2rem 5rem;
   }
 
   .hero h1 {

@@ -120,6 +120,9 @@ const socialDescription = ogDescription || pageDescription;
         </a>
       </div>
     </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <a href="/contact" class="mobile-sticky-cta">Book a Free Trial</a>
   </body>
 </html>
 
@@ -431,4 +434,41 @@ const socialDescription = ogDescription || pageDescription;
   .animate-delay-2 { animation-delay: 0.2s; }
   .animate-delay-3 { animation-delay: 0.3s; }
   .animate-delay-4 { animation-delay: 0.4s; }
+
+  /* Mobile Sticky CTA */
+  .mobile-sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+  }
+
+  .mobile-sticky-cta:hover {
+    background: #d66a3d;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-sticky-cta {
+      display: block;
+    }
+
+    footer {
+      padding-bottom: 4rem;
+    }
+
+    main {
+      padding-bottom: 1rem;
+    }
+  }
 </style>
