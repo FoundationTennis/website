@@ -93,6 +93,43 @@ const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
     </div>
   </section>
 
+  <section class="testimonials-section">
+    <h2>What Parents Say</h2>
+    <div class="testimonials-placeholder">
+      <div class="testimonial-card placeholder">
+        <div class="testimonial-photo">
+          <span class="photo-icon">👤</span>
+        </div>
+        <div class="testimonial-content">
+          <p class="testimonial-text">"Parent testimonial about their child's experience at Foundation Tennis..."</p>
+          <p class="testimonial-author">— Parent Name, Child's Program</p>
+        </div>
+      </div>
+      <div class="testimonial-card placeholder">
+        <div class="testimonial-photo">
+          <span class="photo-icon">👤</span>
+        </div>
+        <div class="testimonial-content">
+          <p class="testimonial-text">"Another parent sharing how their child developed skills and confidence..."</p>
+          <p class="testimonial-author">— Parent Name, Child's Program</p>
+        </div>
+      </div>
+      <div class="testimonial-card placeholder">
+        <div class="testimonial-photo">
+          <span class="photo-icon">👤</span>
+        </div>
+        <div class="testimonial-content">
+          <p class="testimonial-text">"A third testimonial highlighting the community and coaching quality..."</p>
+          <p class="testimonial-author">— Parent Name, Child's Program</p>
+        </div>
+      </div>
+    </div>
+    <p class="testimonials-note">
+      <span class="note-icon">📝</span>
+      <span>Testimonials needed: Collect 3-5 parent quotes with permission. Include child's first name and program level.</span>
+    </p>
+  </section>
+
   <section class="cta-section">
     <h2>Ready to Start?</h2>
     <p>Book a free trial lesson and see why kids love Foundation Tennis.</p>
@@ -314,6 +351,89 @@ const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
     font-size: 1rem;
     color: #666;
     margin-top: 0.5rem;
+  }
+
+  /* Testimonials Section */
+  .testimonials-section {
+    background: white;
+    border-radius: 8px;
+    margin: 2rem auto;
+    padding: 4rem 2rem;
+  }
+
+  .testimonials-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .testimonials-placeholder {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    background: var(--background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .testimonial-card.placeholder {
+    border: 2px dashed rgba(44, 62, 80, 0.2);
+    opacity: 0.7;
+  }
+
+  .testimonial-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .photo-icon {
+    font-size: 1.5rem;
+    opacity: 0.8;
+  }
+
+  .testimonial-content {
+    flex: 1;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .testimonial-author {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .testimonials-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(107, 179, 217, 0.1);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .note-icon {
+    font-size: 1.2rem;
   }
 
   .cta-section {

@@ -49,7 +49,21 @@ const socialDescription = ogDescription || pageDescription;
       <nav>
         <a href="/" class="logo">Foundation Tennis</a>
         <ul class="nav-links">
-          <li><a href="/programs">Programs</a></li>
+          <li class="has-dropdown">
+            <a href="/programs">Programs <span class="dropdown-arrow">▾</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/programs#blue">Blue Group (5-6)</a></li>
+              <li><a href="/programs#red">Red Group (5-8)</a></li>
+              <li><a href="/programs#orange">Orange Group</a></li>
+              <li><a href="/programs#green">Green Group</a></li>
+              <li><a href="/programs#yellow">Yellow Group</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a href="/programs#development">Development Package</a></li>
+              <li><a href="/programs#private">Private Lessons</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a href="/schedule">Weekly Schedule</a></li>
+            </ul>
+          </li>
           <li><a href="/about">About</a></li>
           <li><a href="/coaches">Coaches</a></li>
           <li><a href="/contact">Contact</a></li>
@@ -216,6 +230,10 @@ const socialDescription = ogDescription || pageDescription;
     list-style: none;
   }
 
+  .nav-links > li {
+    position: relative;
+  }
+
   .nav-links a {
     color: var(--text);
     font-weight: 600;
@@ -243,6 +261,61 @@ const socialDescription = ogDescription || pageDescription;
   .nav-cta:hover {
     background: #d66a3d;
     text-decoration: none;
+  }
+
+  /* Dropdown Menu */
+  .dropdown-arrow {
+    font-size: 0.7rem;
+    margin-left: 0.25rem;
+    transition: transform 0.2s;
+  }
+
+  .has-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    min-width: 200px;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    list-style: none;
+    z-index: 200;
+  }
+
+  .has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .dropdown-menu li a {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-bottom: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .dropdown-menu li a:hover {
+    background: var(--background);
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .dropdown-divider {
+    height: 1px;
+    background: #eee;
+    margin: 0.5rem 0;
   }
 
   main {

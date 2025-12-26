@@ -13,11 +13,180 @@ const { Content } = await faq.render();
   metaDescription={faq.data.metaDescription}
 >
   <div class="faq-page">
-    <article class="page-content">
-      <Content />
-    </article>
+    <h1>Frequently Asked Questions</h1>
+    <p class="intro">Find answers to common questions about our tennis programs, policies, and what to expect.</p>
+
+    <div class="faq-accordion" id="faq-accordion">
+      <!-- Getting Started -->
+      <h2 class="faq-category">Getting Started</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>How do I book a trial lesson?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Contact us on <strong>0431 368 752</strong> (call or text) or email <a href="mailto:foundationtennis@hotmail.com">foundationtennis@hotmail.com</a>. Let us know your child's age and any tennis experience, and we'll suggest the best group to try.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>What should my child wear/bring?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Comfortable sports clothes and court shoes (not running shoes with aggressive treads). Bring a water bottle. We have rackets to borrow if needed.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>How do I know which group is right for my child?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We assess during the trial lesson. Groups are based on skill level, not just age. If a child is between levels, we'll place them where they'll develop best.</p>
+        </div>
+      </div>
+
+      <!-- Lessons & Scheduling -->
+      <h2 class="faq-category">Lessons & Scheduling</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>What happens if we miss a lesson?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Contact us to arrange a makeup lesson. We offer flexibility within the term - just let us know in advance when possible.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>What if it rains?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We send a text/email by 2pm if lessons are cancelled. Cancelled lessons are made up or credited. Light rain - we often still play!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>When are the term dates?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Terms run for 8 weeks, aligned with SA school terms. Term 1 starts week 2 of school. Check our <a href="/schedule">schedule page</a> for current dates.</p>
+        </div>
+      </div>
+
+      <!-- Payment & Pricing -->
+      <h2 class="faq-category">Payment & Pricing</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>How do I pay for lessons?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Bank transfer is preferred. We send an invoice before each term with payment details. Cash accepted on the day if needed.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Is there a sibling discount?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! Contact us about multi-child family rates. We also offer discounts for booking multiple sessions per week.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>What's the early bird discount?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Pay in full before term starts and receive 10% off. This applies to all group programs.</p>
+        </div>
+      </div>
+
+      <!-- Programs -->
+      <h2 class="faq-category">Programs & Progression</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>How does my child move up to the next level?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We assess continuously. When a player is ready, we'll discuss the move with you. Progression is based on skill development, not just time spent.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>What's the difference between groups and squads?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Groups are weekly lessons for all levels. Squads (in the Development Package) are more intensive training for committed players, with smaller numbers and technical focus.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="cta-section">
+      <h2>Still have questions?</h2>
+      <p>Get in touch - we're happy to help.</p>
+      <a href="/contact" class="cta-primary">Contact Us</a>
+    </section>
   </div>
 </BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const button = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      const icon = item.querySelector('.faq-icon');
+
+      button?.addEventListener('click', () => {
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          const otherButton = otherItem.querySelector('.faq-question');
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          const otherIcon = otherItem.querySelector('.faq-icon');
+
+          if (otherItem !== item && otherButton && otherAnswer && otherIcon) {
+            otherButton.setAttribute('aria-expanded', 'false');
+            otherAnswer.style.maxHeight = '0';
+            otherIcon.textContent = '+';
+          }
+        });
+
+        // Toggle current item
+        if (!isOpen && answer && icon) {
+          button.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          icon.textContent = '−';
+        } else if (answer && icon) {
+          button.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = '0';
+          icon.textContent = '+';
+        }
+      });
+    });
+  });
+</script>
 
 <style>
   .faq-page {
@@ -26,95 +195,142 @@ const { Content } = await faq.render();
     padding: 3rem 2rem;
   }
 
-  .page-content :global(h1) {
+  h1 {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     color: var(--primary);
   }
 
-  .page-content :global(h2) {
-    font-size: 1.5rem;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+  .intro {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  .faq-category {
+    font-size: 1.25rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
     color: var(--text);
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--primary);
   }
 
-  .page-content :global(h3) {
-    font-size: 1.1rem;
-    margin-top: 1.5rem;
+  .faq-category:first-of-type {
+    margin-top: 0;
+  }
+
+  .faq-item {
     margin-bottom: 0.5rem;
-    color: var(--text);
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
     background: white;
-    padding: 1rem;
-    border-radius: 8px 8px 0 0;
+    border: none;
     border-left: 4px solid var(--primary);
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    text-align: left;
     transition: background 0.2s, border-left-color 0.2s;
   }
 
-  .page-content :global(h3:hover) {
+  .faq-question:hover {
     background: var(--background);
     border-left-color: var(--accent);
   }
 
-  .page-content :global(h3 + p) {
-    background: white;
-    padding: 0 1rem 1rem 1rem;
-    border-radius: 0 0 8px 8px;
-    margin-top: 0;
-    border-left: 4px solid var(--primary);
-    margin-bottom: 1rem;
+  .faq-question[aria-expanded="true"] {
+    border-radius: 8px 8px 0 0;
+    background: var(--background);
+    border-left-color: var(--accent);
   }
 
-  .page-content :global(p) {
-    margin-bottom: 1rem;
+  .faq-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--primary);
+    transition: transform 0.2s;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    background: white;
+    border-left: 4px solid var(--primary);
+    border-radius: 0 0 8px 8px;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq-answer p {
+    padding: 0 1.25rem 1rem;
+    margin: 0;
     line-height: 1.7;
   }
 
-  .page-content :global(strong) {
-    color: var(--text);
+  .faq-answer p:first-child {
+    padding-top: 0.5rem;
   }
 
-  .page-content :global(a) {
+  .faq-answer a {
     color: var(--accent);
     font-weight: 600;
   }
 
-  .page-content :global(a:hover) {
+  .faq-answer a:hover {
     color: var(--primary);
   }
 
-  .page-content :global(ul), .page-content :global(ol) {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-    background: white;
-    padding: 1rem 1rem 1rem 2.5rem;
+  .cta-section {
+    text-align: center;
+    background: var(--text);
+    color: white;
+    padding: 3rem;
     border-radius: 8px;
+    margin-top: 3rem;
   }
 
-  .page-content :global(li) {
+  .cta-section h2 {
+    color: white;
     margin-bottom: 0.5rem;
+    border: none;
   }
 
-  .page-content :global(hr) {
-    border: none;
-    border-top: 1px solid #ddd;
-    margin: 2rem 0;
+  .cta-section p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .cta-primary {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .cta-primary:hover {
+    background: #d66a3d;
   }
 
   @media (max-width: 768px) {
-    .page-content :global(h1) {
+    h1 {
       font-size: 2rem;
     }
 
-    .page-content :global(h2) {
-      font-size: 1.25rem;
-    }
-
-    .page-content :global(h3) {
-      font-size: 1rem;
+    .faq-question {
+      font-size: 0.95rem;
+      padding: 0.875rem 1rem;
     }
   }
 </style>
