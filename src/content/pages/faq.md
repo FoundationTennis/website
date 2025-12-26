@@ -12,6 +12,7 @@ keywords:
   - kids tennis pricing Somerton Park
   - tennis coaching policies
   - junior tennis information
+  - tennis FAQ Somerton Park
 ---
 
 # Frequently Asked Questions

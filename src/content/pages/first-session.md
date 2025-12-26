@@ -12,6 +12,7 @@ keywords:
   - beginner tennis what to expect
   - children tennis lesson preparation
   - tennis trial Adelaide
+  - first tennis lesson guide
 ---
 
 # What to Expect at Your First Lesson

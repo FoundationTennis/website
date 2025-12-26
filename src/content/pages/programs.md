@@ -12,6 +12,7 @@ keywords:
   - junior tennis Somerton Park
   - tennis squads Adelaide
   - children tennis programs
+  - junior tennis coaching Adelaide
 ---
 
 # Tennis Programs for Every Age and Stage

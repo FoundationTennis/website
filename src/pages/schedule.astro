@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const schedule = await getEntry('pages', 'schedule');
+const { Content } = await schedule.render();
+---
+
+<BaseLayout
+  title="Weekly Schedule - Foundation Tennis"
+  description="View our weekly tennis lesson schedule for all age groups at Somerton Park Tennis Club."
+  metaTitle={schedule.data.metaTitle}
+  metaDescription={schedule.data.metaDescription}
+>
+  <div class="schedule-page">
+    <article class="page-content">
+      <Content />
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .schedule-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .page-content :global(h1) {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+  }
+
+  .page-content :global(h2) {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+  }
+
+  .page-content :global(h3) {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+  }
+
+  .page-content :global(p) {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .page-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .page-content :global(th) {
+    background: var(--primary);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .page-content :global(td) {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .page-content :global(tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .page-content :global(tr:hover td) {
+    background: rgba(232, 125, 78, 0.05);
+  }
+
+  .page-content :global(strong) {
+    color: var(--text);
+  }
+
+  .page-content :global(a) {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .page-content :global(a:hover) {
+    color: var(--primary);
+  }
+
+  .page-content :global(ul), .page-content :global(ol) {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .page-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .page-content :global(table) {
+      font-size: 0.9rem;
+    }
+
+    .page-content :global(th),
+    .page-content :global(td) {
+      padding: 0.5rem;
+    }
+
+    .page-content :global(h1) {
+      font-size: 2rem;
+    }
+  }
+</style>
