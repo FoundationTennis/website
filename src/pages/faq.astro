@@ -51,6 +51,12 @@ const { Content } = await faq.render();
     border-radius: 8px 8px 0 0;
     border-left: 4px solid var(--primary);
     cursor: pointer;
+    transition: background 0.2s, border-left-color 0.2s;
+  }
+
+  .page-content :global(h3:hover) {
+    background: var(--background);
+    border-left-color: var(--accent);
   }
 
   .page-content :global(h3 + p) {

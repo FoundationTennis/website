@@ -274,13 +274,19 @@ const otherPrograms = allPrograms.filter(p => !p.id.startsWith('groups/') && !p.
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border-top: 4px solid var(--primary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .program-card.blue { border-top-color: #3498db; }
-  .program-card.red { border-top-color: #e74c3c; }
-  .program-card.orange { border-top-color: #f39c12; }
-  .program-card.green { border-top-color: #27ae60; }
-  .program-card.yellow { border-top-color: #f1c40f; }
+  .program-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+
+  .program-card.blue { border-top-color: var(--program-blue); }
+  .program-card.red { border-top-color: var(--program-red); }
+  .program-card.orange { border-top-color: var(--program-orange); }
+  .program-card.green { border-top-color: var(--program-green); }
+  .program-card.yellow { border-top-color: var(--program-yellow); }
   .program-card.girls { border-top-color: var(--secondary); }
 
   .program-card h3 {

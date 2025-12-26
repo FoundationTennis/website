@@ -71,11 +71,21 @@ const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
     <a href="/programs" class="view-all">View All Programs →</a>
   </section>
 
-  <section class="testimonial-placeholder">
-    <h2>What Parents Say</h2>
-    <div class="testimonial-card">
-      <p class="testimonial-text">"Testimonials coming soon. We're collecting feedback from our amazing families."</p>
-      <p class="testimonial-author">— Foundation Tennis Families</p>
+  <section class="trust-section">
+    <h2>Trusted by Families Since 2009</h2>
+    <div class="trust-stats">
+      <div class="stat">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Years Coaching</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">150+</span>
+        <span class="stat-label">Players Coached</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">TA</span>
+        <span class="stat-label">Certified Coaches</span>
+      </div>
     </div>
   </section>
 
@@ -181,6 +191,12 @@ const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
 
   .value-card h3 {
@@ -202,6 +218,12 @@ const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border-left: 4px solid var(--primary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .program-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
 
   .program-card.featured {
@@ -228,29 +250,38 @@ const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
     color: var(--primary);
   }
 
-  .testimonial-placeholder {
+  .trust-section {
     background: white;
     border-radius: 8px;
     margin: 2rem auto;
-  }
-
-  .testimonial-card {
-    max-width: 600px;
-    margin: 0 auto;
     text-align: center;
-    padding: 2rem;
   }
 
-  .testimonial-text {
-    font-size: 1.2rem;
-    font-style: italic;
-    color: #666;
-    margin-bottom: 1rem;
+  .trust-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
   }
 
-  .testimonial-author {
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 700;
     color: var(--primary);
-    font-weight: 600;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 0.5rem;
   }
 
   .cta-section {
