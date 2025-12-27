@@ -146,6 +146,19 @@ function BookingIslandInner() {
     return new Date();
   }, [regularSessions]);
 
+  // Find next available date with open spots
+  const nextAvailableDate = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const availableEvents = calendarEvents
+      .filter(e => {
+        const eventDate = new Date(e.start);
+        return eventDate >= today && e.extendedProps.session.available_spots > 0;
+      })
+      .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
+    return availableEvents.length > 0 ? new Date(availableEvents[0].start) : null;
+  }, [calendarEvents]);
+
   const handleEventClick = (info: unknown) => {
     const eventInfo = info as { event: { extendedProps: { session: Session } } };
     setSelectedSession(eventInfo.event.extendedProps.session);
@@ -171,55 +184,70 @@ function BookingIslandInner() {
     setShowLoginModal(true);
   };
 
+  const handleGoToTermStart = () => {
+    if (calendarRef.current) {
+      calendarRef.current.getApi().gotoDate(termStartDate);
+    }
+  };
+
+  const handleGoToNextAvailable = () => {
+    if (nextAvailableDate && calendarRef.current) {
+      calendarRef.current.getApi().gotoDate(nextAvailableDate);
+    }
+  };
+
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <div className="text-gray-600">Loading schedule...</div>
+      <div className="flex items-center justify-center py-16">
+        <div className="text-gray-600 text-lg">Loading schedule...</div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <div className="text-red-600">{error}</div>
+      <div className="flex items-center justify-center py-16">
+        <div className="text-red-600 text-lg">{error}</div>
       </div>
     );
   }
 
   return (
-    <div>
-      {/* Auth Header */}
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex gap-2">
-          <button
-            onClick={() => setView('list')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-              view === 'list'
-                ? 'bg-[--color-primary] text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
-          >
-            List View
-          </button>
+    <div className="space-y-6">
+      {/* Header with View Toggle and Auth */}
+      <div className="flex flex-wrap justify-between items-center gap-4">
+        {/* View Toggle - Pill Style */}
+        <div className="inline-flex rounded-full bg-gray-100 p-1">
           <button
             onClick={() => setView('calendar')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
               view === 'calendar'
-                ? 'bg-[--color-primary] text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                ? 'bg-[--color-accent] text-white shadow-md'
+                : 'text-gray-600 hover:text-gray-900'
             }`}
           >
             Calendar
           </button>
+          <button
+            onClick={() => setView('list')}
+            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+              view === 'list'
+                ? 'bg-[--color-accent] text-white shadow-md'
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            List
+          </button>
         </div>
+
+        {/* Auth Controls */}
         <div className="flex items-center gap-4">
           {isAuthenticated ? (
             <>
               <span className="text-sm text-gray-600">Hi, {user?.first_name}</span>
               <button
                 onClick={logout}
-                className="text-sm text-[--color-accent] hover:underline"
+                className="text-sm text-[--color-accent] hover:underline font-medium"
               >
                 Sign Out
               </button>
@@ -227,7 +255,7 @@ function BookingIslandInner() {
           ) : (
             <button
               onClick={() => setShowLoginModal(true)}
-              className="px-4 py-2 bg-[--color-primary] text-white rounded-lg hover:opacity-90"
+              className="px-5 py-2.5 bg-[--color-primary] text-white rounded-lg hover:opacity-90 font-semibold shadow-md transition-all"
             >
               Sign In
             </button>
@@ -235,37 +263,59 @@ function BookingIslandInner() {
         </div>
       </div>
 
-      {/* Term Info */}
+      {/* Term Info with Navigation Buttons */}
       {regularSessions.length > 0 && regularSessions[0].term && (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-          <h2 className="text-lg font-semibold text-blue-900">{regularSessions[0].term.name}</h2>
-          <p className="text-sm text-blue-700">
-            {new Date(regularSessions[0].term.start_date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} - {new Date(regularSessions[0].term.end_date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} ({regularSessions[0].term.total_weeks} weeks)
-          </p>
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h2 className="text-xl font-bold text-blue-900">{regularSessions[0].term.name}</h2>
+              <p className="text-sm text-blue-700 mt-1">
+                {new Date(regularSessions[0].term.start_date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} - {new Date(regularSessions[0].term.end_date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} ({regularSessions[0].term.total_weeks} weeks)
+              </p>
+            </div>
+            {view === 'calendar' && (
+              <div className="flex gap-3">
+                <button
+                  onClick={handleGoToTermStart}
+                  className="px-4 py-2 bg-white text-blue-700 border border-blue-300 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors"
+                >
+                  Go to Term Start
+                </button>
+                {nextAvailableDate && (
+                  <button
+                    onClick={handleGoToNextAvailable}
+                    className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors shadow-md"
+                  >
+                    Next Available →
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
       {/* Legend */}
-      <div className="flex flex-wrap gap-4 mb-6 text-sm">
+      <div className="flex flex-wrap gap-6 text-sm">
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded bg-green-100 border-2 border-green-500" />
-          <span>Available</span>
+          <span className="text-gray-700">Available</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded bg-yellow-100 border-2 border-yellow-500" />
-          <span>1-2 spots</span>
+          <span className="text-gray-700">1-2 spots</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded bg-red-100 border-2 border-red-500" />
-          <span>Full</span>
+          <span className="text-gray-700">Full</span>
         </div>
       </div>
 
       <div className="flex gap-8">
         {/* Main Content */}
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           {view === 'calendar' ? (
-            <div className="bg-white rounded-lg shadow-md p-4">
+            <div className="bg-white rounded-xl shadow-lg p-6">
               <FullCalendar
                 ref={calendarRef}
                 plugins={[dayGridPlugin, timeGridPlugin]}
@@ -274,7 +324,7 @@ function BookingIslandInner() {
                 headerToolbar={{ left: 'prev,next today', center: 'title', right: 'timeGridWeek,timeGridDay' }}
                 events={calendarEvents}
                 eventClick={handleEventClick}
-                slotMinTime="07:00:00"
+                slotMinTime="11:00:00"
                 slotMaxTime="21:00:00"
                 allDaySlot={false}
                 height="auto"
@@ -287,14 +337,14 @@ function BookingIslandInner() {
               />
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-8">
               {DAYS.map((day, index) => {
                 const daySessions = regularSessions.filter((s) => s.day_of_week === index);
                 if (daySessions.length === 0) return null;
                 return (
                   <div key={day}>
-                    <h2 className="text-lg font-semibold text-[--color-text] mb-3">{day}</h2>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <h2 className="text-xl font-bold text-[--color-text] mb-4">{day}</h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                       {daySessions.map((session) => (
                         <ProgramCard key={session.id} session={session} onSelect={handleSessionSelect} />
                       ))}
@@ -308,20 +358,21 @@ function BookingIslandInner() {
 
         {/* Sidebar */}
         <div className="w-80 flex-shrink-0 hidden lg:block">
-          <div className="sticky top-4 space-y-4">
+          <div className="sticky top-24 space-y-5">
             {/* Packages Section */}
             {packagePrograms.length > 0 && (
-              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg shadow-md p-4 border border-indigo-200">
-                <h3 className="text-lg font-bold text-indigo-900 mb-3">Packages</h3>
-                <p className="text-sm text-indigo-700 mb-4">Premium training packages</p>
+              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl shadow-lg p-5 border border-indigo-200">
+                <h3 className="text-lg font-bold text-indigo-900 mb-2">Packages</h3>
+                <p className="text-sm text-indigo-700 mb-4">Premium training packages with comprehensive benefits</p>
                 {packagePrograms.map((pkg) => (
-                  <div key={pkg.id} className="bg-white rounded-lg p-4 border border-indigo-200 mb-3">
+                  <div key={pkg.id} className="bg-white rounded-lg p-4 border border-indigo-200 mb-3 last:mb-0">
                     <h4 className="font-semibold text-[--color-text]">{pkg.program.name}</h4>
+                    <p className="text-xs text-gray-500 mt-1">{pkg.available_spots} of {pkg.program.max_capacity} spots remaining</p>
                     <div className="flex justify-between items-center mt-3">
                       <span className="text-lg font-bold text-indigo-600">${(pkg.program.price_cents / 100).toFixed(0)}/term</span>
                       <button
                         onClick={() => handleSessionSelect(pkg)}
-                        className="bg-indigo-600 text-white px-3 py-1.5 rounded text-sm hover:bg-indigo-700"
+                        className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50"
                         disabled={pkg.available_spots === 0}
                       >
                         {pkg.available_spots === 0 ? 'Full' : 'Select'}
@@ -334,12 +385,12 @@ function BookingIslandInner() {
 
             {/* Selected Session */}
             {selectedSession && (
-              <div className="bg-white rounded-lg shadow-md p-4">
-                <h3 className="text-sm font-medium text-gray-500 mb-2">Selected</h3>
+              <div className="bg-white rounded-xl shadow-lg p-5">
+                <h3 className="text-sm font-medium text-gray-500 mb-3">Selected</h3>
                 <ProgramCard session={selectedSession} onSelect={handleSessionSelect} />
                 <button
                   onClick={() => setSelectedSession(null)}
-                  className="w-full mt-2 text-sm text-gray-500 hover:text-gray-700"
+                  className="w-full mt-3 text-sm text-gray-500 hover:text-gray-700 font-medium"
                 >
                   Clear selection
                 </button>
