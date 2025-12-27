@@ -52,9 +52,9 @@ export default function BasketSidebar() {
 
   if (items.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-lg font-semibold text-[--color-text] mb-4">Your Basket</h2>
-        <p className="text-gray-500 text-sm">
+      <div className="bg-white rounded-xl shadow-lg p-6">
+        <h2 className="text-lg font-bold text-[--color-text] mb-3">Your Basket</h2>
+        <p className="text-gray-500 text-sm leading-relaxed">
           Your basket is empty. Select a program from the schedule to get started.
         </p>
       </div>
@@ -62,7 +62,7 @@ export default function BasketSidebar() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="bg-white rounded-xl shadow-lg p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-[--color-text]">Your Basket</h2>
         <button

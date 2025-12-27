@@ -357,22 +357,22 @@ function BookingIslandInner() {
         </div>
 
         {/* Sidebar */}
-        <div className="w-80 flex-shrink-0 hidden lg:block">
-          <div className="sticky top-24 space-y-5">
+        <div className="w-96 flex-shrink-0 hidden lg:block">
+          <div className="sticky top-24 space-y-6">
             {/* Packages Section */}
             {packagePrograms.length > 0 && (
-              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl shadow-lg p-5 border border-indigo-200">
-                <h3 className="text-lg font-bold text-indigo-900 mb-2">Packages</h3>
-                <p className="text-sm text-indigo-700 mb-4">Premium training packages with comprehensive benefits</p>
+              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl shadow-lg p-6 border border-indigo-200">
+                <h3 className="text-lg font-bold text-indigo-900 mb-3">Packages</h3>
+                <p className="text-sm text-indigo-700 mb-5 leading-relaxed">Premium training packages with comprehensive benefits</p>
                 {packagePrograms.map((pkg) => (
-                  <div key={pkg.id} className="bg-white rounded-lg p-4 border border-indigo-200 mb-3 last:mb-0">
-                    <h4 className="font-semibold text-[--color-text]">{pkg.program.name}</h4>
-                    <p className="text-xs text-gray-500 mt-1">{pkg.available_spots} of {pkg.program.max_capacity} spots remaining</p>
-                    <div className="flex justify-between items-center mt-3">
-                      <span className="text-lg font-bold text-indigo-600">${(pkg.program.price_cents / 100).toFixed(0)}/term</span>
+                  <div key={pkg.id} className="bg-white rounded-lg p-5 border border-indigo-200 mb-4 last:mb-0">
+                    <h4 className="font-semibold text-[--color-text] text-base">{pkg.program.name}</h4>
+                    <p className="text-sm text-gray-500 mt-2">{pkg.available_spots} of {pkg.program.max_capacity} spots remaining</p>
+                    <div className="flex justify-between items-center mt-4">
+                      <span className="text-xl font-bold text-indigo-600">${(pkg.program.price_cents / 100).toFixed(0)}/term</span>
                       <button
                         onClick={() => handleSessionSelect(pkg)}
-                        className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50"
+                        className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors disabled:opacity-50"
                         disabled={pkg.available_spots === 0}
                       >
                         {pkg.available_spots === 0 ? 'Full' : 'Select'}
@@ -385,12 +385,12 @@ function BookingIslandInner() {
 
             {/* Selected Session */}
             {selectedSession && (
-              <div className="bg-white rounded-xl shadow-lg p-5">
-                <h3 className="text-sm font-medium text-gray-500 mb-3">Selected</h3>
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h3 className="text-sm font-medium text-gray-500 mb-4">Selected</h3>
                 <ProgramCard session={selectedSession} onSelect={handleSessionSelect} />
                 <button
                   onClick={() => setSelectedSession(null)}
-                  className="w-full mt-3 text-sm text-gray-500 hover:text-gray-700 font-medium"
+                  className="w-full mt-4 text-sm text-gray-500 hover:text-gray-700 font-medium"
                 >
                   Clear selection
                 </button>
