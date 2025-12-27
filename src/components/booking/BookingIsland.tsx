@@ -213,14 +213,14 @@ function BookingIslandInner() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header with View Toggle and Auth */}
       <div className="flex flex-wrap justify-between items-center gap-4">
         {/* View Toggle - Pill Style */}
-        <div className="inline-flex rounded-full bg-gray-100 p-1">
+        <div className="inline-flex rounded-full bg-gray-100 p-1.5">
           <button
             onClick={() => setView('calendar')}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${
               view === 'calendar'
                 ? 'bg-[--color-accent] text-white shadow-md'
                 : 'text-gray-600 hover:text-gray-900'
@@ -230,7 +230,7 @@ function BookingIslandInner() {
           </button>
           <button
             onClick={() => setView('list')}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${
               view === 'list'
                 ? 'bg-[--color-accent] text-white shadow-md'
                 : 'text-gray-600 hover:text-gray-900'
@@ -255,7 +255,7 @@ function BookingIslandInner() {
           ) : (
             <button
               onClick={() => setShowLoginModal(true)}
-              className="px-5 py-2.5 bg-[--color-primary] text-white rounded-lg hover:opacity-90 font-semibold shadow-md transition-all"
+              className="px-6 py-3 bg-[--color-primary] text-white rounded-lg hover:opacity-90 font-semibold shadow-md transition-all"
             >
               Sign In
             </button>
@@ -265,11 +265,11 @@ function BookingIslandInner() {
 
       {/* Term Info with Navigation Buttons */}
       {regularSessions.length > 0 && regularSessions[0].term && (
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <h2 className="text-xl font-bold text-blue-900">{regularSessions[0].term.name}</h2>
-              <p className="text-sm text-blue-700 mt-1">
+              <p className="text-sm text-blue-700 mt-2 leading-relaxed">
                 {new Date(regularSessions[0].term.start_date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} - {new Date(regularSessions[0].term.end_date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} ({regularSessions[0].term.total_weeks} weeks)
               </p>
             </div>
@@ -277,14 +277,14 @@ function BookingIslandInner() {
               <div className="flex gap-3">
                 <button
                   onClick={handleGoToTermStart}
-                  className="px-4 py-2 bg-white text-blue-700 border border-blue-300 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors"
+                  className="px-5 py-2.5 bg-white text-blue-700 border border-blue-300 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors"
                 >
                   Go to Term Start
                 </button>
                 {nextAvailableDate && (
                   <button
                     onClick={handleGoToNextAvailable}
-                    className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors shadow-md"
+                    className="px-5 py-2.5 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors shadow-md"
                   >
                     Next Available →
                   </button>
@@ -296,7 +296,7 @@ function BookingIslandInner() {
       )}
 
       {/* Legend */}
-      <div className="flex flex-wrap gap-6 text-sm">
+      <div className="flex flex-wrap gap-8 text-sm py-2">
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded bg-green-100 border-2 border-green-500" />
           <span className="text-gray-700">Available</span>
@@ -358,17 +358,17 @@ function BookingIslandInner() {
 
         {/* Sidebar */}
         <div className="w-96 flex-shrink-0 hidden lg:block">
-          <div className="sticky top-24 space-y-6">
+          <div className="sticky top-24 space-y-8">
             {/* Packages Section */}
             {packagePrograms.length > 0 && (
-              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl shadow-lg p-6 border border-indigo-200">
-                <h3 className="text-lg font-bold text-indigo-900 mb-3">Packages</h3>
-                <p className="text-sm text-indigo-700 mb-5 leading-relaxed">Premium training packages with comprehensive benefits</p>
+              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl shadow-lg p-8 border border-indigo-200">
+                <h3 className="text-lg font-bold text-indigo-900 mb-4">Packages</h3>
+                <p className="text-sm text-indigo-700 mb-6 leading-relaxed">Premium training packages with comprehensive benefits</p>
                 {packagePrograms.map((pkg) => (
-                  <div key={pkg.id} className="bg-white rounded-lg p-5 border border-indigo-200 mb-4 last:mb-0">
-                    <h4 className="font-semibold text-[--color-text] text-base">{pkg.program.name}</h4>
-                    <p className="text-sm text-gray-500 mt-2">{pkg.available_spots} of {pkg.program.max_capacity} spots remaining</p>
-                    <div className="flex justify-between items-center mt-4">
+                  <div key={pkg.id} className="bg-white rounded-lg p-6 border border-indigo-200 mb-5 last:mb-0">
+                    <h4 className="font-semibold text-[--color-text] text-base mb-3">{pkg.program.name}</h4>
+                    <p className="text-sm text-gray-500 mb-4">{pkg.available_spots} of {pkg.program.max_capacity} spots remaining</p>
+                    <div className="flex justify-between items-center">
                       <span className="text-xl font-bold text-indigo-600">${(pkg.program.price_cents / 100).toFixed(0)}/term</span>
                       <button
                         onClick={() => handleSessionSelect(pkg)}
@@ -385,12 +385,12 @@ function BookingIslandInner() {
 
             {/* Selected Session */}
             {selectedSession && (
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <h3 className="text-sm font-medium text-gray-500 mb-4">Selected</h3>
+              <div className="bg-white rounded-xl shadow-lg p-8">
+                <h3 className="text-sm font-medium text-gray-500 mb-5">Selected</h3>
                 <ProgramCard session={selectedSession} onSelect={handleSessionSelect} />
                 <button
                   onClick={() => setSelectedSession(null)}
-                  className="w-full mt-4 text-sm text-gray-500 hover:text-gray-700 font-medium"
+                  className="w-full mt-5 text-sm text-gray-500 hover:text-gray-700 font-medium"
                 >
                   Clear selection
                 </button>

@@ -46,14 +46,13 @@ export default function BasketSidebar() {
       setShowLoginModal(true);
       return;
     }
-    // Navigate to checkout - in Astro Islands we'll handle this differently
     window.location.href = '/checkout';
   };
 
   if (items.length === 0) {
     return (
-      <div className="bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-lg font-bold text-[--color-text] mb-3">Your Basket</h2>
+      <div className="bg-white rounded-xl shadow-lg p-8">
+        <h2 className="text-lg font-bold text-[--color-text] mb-4">Your Basket</h2>
         <p className="text-gray-500 text-sm leading-relaxed">
           Your basket is empty. Select a program from the schedule to get started.
         </p>
@@ -62,9 +61,9 @@ export default function BasketSidebar() {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-[--color-text]">Your Basket</h2>
+    <div className="bg-white rounded-xl shadow-lg p-8">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-lg font-bold text-[--color-text]">Your Basket</h2>
         <button
           onClick={clearBasket}
           className="text-sm text-red-600 hover:text-red-800"
@@ -74,24 +73,24 @@ export default function BasketSidebar() {
       </div>
 
       {/* Line Items */}
-      <div className="space-y-3 mb-6">
+      <div className="space-y-4 mb-8">
         {items.map((item) => (
           <div
             key={`${item.session.id}-${item.child.id}`}
-            className="flex items-start justify-between py-2 border-b border-gray-100"
+            className="flex items-start justify-between py-3 border-b border-gray-100"
           >
             <div className="flex-1">
-              <p className="text-sm font-medium text-[--color-text]">
+              <p className="text-sm font-medium text-[--color-text] mb-1">
                 {item.child.first_name} {item.child.last_name || ''}
               </p>
-              <p className="text-sm text-gray-600">{item.session.program.name}</p>
+              <p className="text-sm text-gray-600 mb-1">{item.session.program.name}</p>
               {item.discount_percent > 0 && (
                 <p className="text-xs text-green-600">
                   {item.weeks_remaining} weeks remaining ({item.discount_percent}% off)
                 </p>
               )}
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <span className="text-sm font-medium text-[--color-text]">
                 {formatPrice(item.price_cents)}
               </span>
@@ -119,11 +118,11 @@ export default function BasketSidebar() {
       </div>
 
       {/* Coupon Code */}
-      <div className="mb-6">
+      <div className="mb-8">
         {coupon ? (
-          <div className="flex items-center justify-between bg-green-50 p-3 rounded-md">
+          <div className="flex items-center justify-between bg-green-50 p-4 rounded-lg">
             <div>
-              <p className="text-sm font-medium text-green-800">
+              <p className="text-sm font-medium text-green-800 mb-1">
                 {coupon.code} applied
               </p>
               <p className="text-xs text-green-600">
@@ -134,7 +133,7 @@ export default function BasketSidebar() {
             </div>
             <button
               onClick={removeCoupon}
-              className="text-sm text-green-700 hover:text-green-900"
+              className="text-sm text-green-700 hover:text-green-900 font-medium"
             >
               Remove
             </button>
@@ -143,11 +142,11 @@ export default function BasketSidebar() {
           <div>
             <label
               htmlFor="coupon"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 mb-2"
             >
               Coupon Code
             </label>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <input
                 type="text"
                 id="coupon"
@@ -155,50 +154,50 @@ export default function BasketSidebar() {
                 onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
                 onKeyDown={handleKeyDown}
                 placeholder="Enter code"
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[--color-primary]"
+                className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[--color-primary]"
               />
               <button
                 onClick={handleApplyCoupon}
                 disabled={isValidatingCoupon}
-                className="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-200 disabled:opacity-50"
+                className="px-5 py-2.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 disabled:opacity-50"
               >
                 {isValidatingCoupon ? '...' : 'Apply'}
               </button>
             </div>
             {couponError && (
-              <p className="mt-1 text-xs text-red-600">{couponError}</p>
+              <p className="mt-2 text-xs text-red-600">{couponError}</p>
             )}
           </div>
         )}
       </div>
 
       {/* Payment Type Toggle */}
-      <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+      <div className="mb-8">
+        <label className="block text-sm font-medium text-gray-700 mb-3">
           Payment Option
         </label>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-3">
           <button
             onClick={() => setPaymentType('upfront')}
-            className={`px-4 py-3 text-sm font-medium rounded-md border-2 transition-colors ${
+            className={`px-4 py-4 text-sm font-medium rounded-lg border-2 transition-colors ${
               paymentType === 'upfront'
                 ? 'border-[--color-primary] bg-[--color-primary]/10 text-[--color-primary]'
                 : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
             }`}
           >
-            <div>Pay Upfront</div>
-            <div className="text-xs mt-1 text-green-600">Save 10%</div>
+            <div className="mb-1">Pay Upfront</div>
+            <div className="text-xs text-green-600">Save 10%</div>
           </button>
           <button
             onClick={() => setPaymentType('installment')}
-            className={`px-4 py-3 text-sm font-medium rounded-md border-2 transition-colors ${
+            className={`px-4 py-4 text-sm font-medium rounded-lg border-2 transition-colors ${
               paymentType === 'installment'
                 ? 'border-[--color-primary] bg-[--color-primary]/10 text-[--color-primary]'
                 : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
             }`}
           >
-            <div>Weekly x8</div>
-            <div className="text-xs mt-1 text-gray-500">
+            <div className="mb-1">Weekly x8</div>
+            <div className="text-xs text-gray-500">
               {weeklyAmount > 0 ? formatPrice(weeklyAmount) + '/week' : ''}
             </div>
           </button>
@@ -206,7 +205,7 @@ export default function BasketSidebar() {
       </div>
 
       {/* Price Breakdown */}
-      <div className="border-t border-gray-200 pt-4 space-y-2">
+      <div className="border-t border-gray-200 pt-6 space-y-3">
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">Subtotal</span>
           <span className="text-[--color-text]">{formatPrice(subtotal)}</span>
@@ -226,23 +225,23 @@ export default function BasketSidebar() {
           </div>
         )}
 
-        <div className="flex justify-between text-lg font-semibold pt-2 border-t border-gray-200">
+        <div className="flex justify-between text-lg font-semibold pt-4 border-t border-gray-200">
           <span>Total</span>
           <span>{formatPrice(total)}</span>
         </div>
 
         {paymentType === 'installment' && (
-          <p className="text-xs text-gray-500 text-center">
+          <p className="text-xs text-gray-500 text-center pt-1">
             8 weekly payments of {formatPrice(weeklyAmount)}
           </p>
         )}
       </div>
 
       {/* Checkout Button */}
-      <div className="mt-6">
+      <div className="mt-8">
         <button
           onClick={handleCheckout}
-          className="block w-full text-center px-4 py-3 bg-[--color-primary] text-white font-medium rounded-md hover:opacity-90 transition-colors"
+          className="block w-full text-center px-4 py-4 bg-[--color-primary] text-white font-semibold rounded-lg hover:opacity-90 transition-colors"
         >
           {isAuthenticated ? 'Proceed to Checkout' : 'Sign in to Checkout'}
         </button>
