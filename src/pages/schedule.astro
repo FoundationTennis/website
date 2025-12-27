@@ -1,117 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
-
-const schedule = await getEntry('pages', 'schedule');
-const { Content } = await schedule.render();
+import BookingIsland from '../components/booking/BookingIsland';
 ---
 
 <BaseLayout
-  title="Weekly Schedule - Foundation Tennis"
-  description="View our weekly tennis lesson schedule for all age groups at Somerton Park Tennis Club."
-  metaTitle={schedule.data.metaTitle}
-  metaDescription={schedule.data.metaDescription}
+  title="Book a Session - Foundation Tennis"
+  description="Browse our weekly tennis lesson schedule and book online. View availability and enroll your child at Somerton Park Tennis Club."
+  metaTitle="Book Tennis Lessons | Foundation Tennis"
+  metaDescription="Browse available tennis sessions at Somerton Park Tennis Club. Select a program, choose your child, and book online with instant confirmation."
 >
   <div class="schedule-page">
-    <h1>Weekly Lesson Schedule</h1>
-    <p class="intro">Find the right time for your child at Somerton Park Tennis Club. Tap a session to learn more.</p>
+    <h1>Book a Session</h1>
+    <p class="intro">Browse available sessions, select a program, and book online. Need help choosing? <a href="/contact">Contact us</a> for a free trial.</p>
 
-    <!-- Visual Schedule Grid -->
-    <section class="schedule-grid-section">
-      <h2>At a Glance</h2>
-      <div class="schedule-legend">
-        <span class="legend-item blue">Blue (5-6)</span>
-        <span class="legend-item red">Red (5-8)</span>
-        <span class="legend-item orange">Orange</span>
-        <span class="legend-item green">Green</span>
-        <span class="legend-item yellow">Yellow</span>
-        <span class="legend-item girls">Girls</span>
-      </div>
-
-      <div class="schedule-grid">
-        <div class="grid-header">
-          <div class="day-label"></div>
-          <div class="time-slot">3:00pm</div>
-          <div class="time-slot">4:00pm</div>
-          <div class="time-slot">5:00pm</div>
-          <div class="time-slot">6:00pm</div>
-          <div class="time-slot">7:00pm</div>
-        </div>
-
-        <div class="grid-row">
-          <div class="day-label">Mon</div>
-          <a href="/programs#red" class="session red">Red</a>
-          <a href="/programs#orange" class="session orange">Orange</a>
-          <a href="/programs#green" class="session green">Green</a>
-          <a href="/programs#yellow" class="session yellow">Yellow</a>
-          <div class="session empty">-</div>
-        </div>
-
-        <div class="grid-row">
-          <div class="day-label">Tue</div>
-          <a href="/programs#blue" class="session blue">Blue</a>
-          <a href="/programs#red" class="session red">Red</a>
-          <a href="/programs#orange" class="session orange">Orange</a>
-          <a href="/programs#green" class="session girls">Girls O/G</a>
-          <a href="/programs#yellow" class="session yellow">Yellow</a>
-        </div>
-
-        <div class="grid-row">
-          <div class="day-label">Wed</div>
-          <a href="/programs#red" class="session red">Red</a>
-          <a href="/programs#green" class="session green">Green</a>
-          <a href="/programs#yellow" class="session yellow">Yellow</a>
-          <a href="/programs#yellow" class="session girls">Girls Y</a>
-          <div class="session empty">-</div>
-        </div>
-
-        <div class="grid-row">
-          <div class="day-label">Thu</div>
-          <a href="/programs#orange" class="session orange">Orange</a>
-          <a href="/programs#development" class="session dev">Squad</a>
-          <a href="/programs#green" class="session green">Green</a>
-          <a href="/programs#yellow" class="session yellow">Yellow</a>
-          <div class="session empty">-</div>
-        </div>
-
-        <div class="grid-row">
-          <div class="day-label">Fri</div>
-          <a href="/programs#comp" class="session comp">Red Comp</a>
-          <a href="/programs#orange" class="session orange">O/G</a>
-          <a href="/programs#yellow" class="session yellow">Yellow</a>
-          <div class="session empty">-</div>
-          <div class="session empty">-</div>
-        </div>
-
-        <div class="grid-row">
-          <div class="day-label">Sat</div>
-          <a href="/programs#yellow" class="session yellow">Yellow</a>
-          <a href="/programs#green" class="session green">Green</a>
-          <a href="/programs#orange" class="session orange">Orange</a>
-          <a href="/programs#red" class="session red">Red</a>
-          <a href="/programs#comp" class="session comp">Comps</a>
-        </div>
-      </div>
-
-      <p class="grid-note">Times are approximate start times. Sessions run 30-60 minutes depending on level.</p>
-    </section>
-
-    <section class="cta-banner">
-      <p>Not sure which group? <a href="/contact">Book a trial</a> and we'll find the right fit.</p>
-    </section>
-
-    <!-- Detailed Schedule from Markdown -->
-    <article class="page-content">
-      <Content />
-    </article>
+    <!-- React Booking Island -->
+    <BookingIsland client:load />
   </div>
 </BaseLayout>
 
 <style>
   .schedule-page {
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 2rem;
   }
 
   .schedule-page > h1 {
@@ -126,227 +37,21 @@ const { Content } = await schedule.render();
     margin-bottom: 2rem;
   }
 
-  /* Schedule Grid Section */
-  .schedule-grid-section {
-    margin-bottom: 3rem;
-  }
-
-  .schedule-grid-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--text);
-  }
-
-  .schedule-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .legend-item {
-    padding: 0.35rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: white;
-  }
-
-  .legend-item.blue { background: var(--program-blue); }
-  .legend-item.red { background: var(--program-red); }
-  .legend-item.orange { background: var(--program-orange); }
-  .legend-item.green { background: var(--program-green); }
-  .legend-item.yellow { background: var(--program-yellow); color: var(--text); }
-  .legend-item.girls { background: var(--secondary); }
-
-  .schedule-grid {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  }
-
-  .grid-header, .grid-row {
-    display: grid;
-    grid-template-columns: 60px repeat(5, 1fr);
-    gap: 2px;
-  }
-
-  .grid-header {
-    background: var(--text);
-    color: white;
-  }
-
-  .grid-header .day-label,
-  .grid-header .time-slot {
-    padding: 0.75rem 0.5rem;
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.85rem;
-  }
-
-  .grid-row {
-    border-bottom: 1px solid #eee;
-  }
-
-  .grid-row:last-child {
-    border-bottom: none;
-  }
-
-  .day-label {
-    background: var(--background);
-    padding: 0.75rem 0.5rem;
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--text);
-  }
-
-  .session {
-    padding: 0.75rem 0.5rem;
-    text-align: center;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    color: white;
-  }
-
-  .session:hover:not(.empty) {
-    transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    z-index: 1;
-    position: relative;
-  }
-
-  .session.blue { background: var(--program-blue); }
-  .session.red { background: var(--program-red); }
-  .session.orange { background: var(--program-orange); }
-  .session.green { background: var(--program-green); }
-  .session.yellow { background: var(--program-yellow); color: var(--text); }
-  .session.girls { background: var(--secondary); }
-  .session.dev { background: var(--accent); }
-  .session.comp { background: var(--text); }
-  .session.empty { background: #f9f9f9; color: #ccc; }
-
-  .grid-note {
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 1rem;
-    text-align: center;
-  }
-
-  .cta-banner {
-    background: var(--accent);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .cta-banner p {
-    margin: 0;
-  }
-
-  .cta-banner a {
-    color: white;
-    font-weight: 700;
-    text-decoration: underline;
-  }
-
-  /* Page Content (markdown) */
-  .page-content :global(h1) {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary);
-  }
-
-  .page-content :global(h2) {
-    font-size: 1.75rem;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--text);
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 0.5rem;
-  }
-
-  .page-content :global(h3) {
-    font-size: 1.25rem;
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
-    color: var(--primary);
-  }
-
-  .page-content :global(p) {
-    margin-bottom: 1rem;
-    line-height: 1.7;
-  }
-
-  .page-content :global(table) {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  }
-
-  .page-content :global(th) {
-    background: var(--primary);
-    color: white;
-    padding: 1rem;
-    text-align: left;
-    font-weight: 600;
-  }
-
-  .page-content :global(td) {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #eee;
-  }
-
-  .page-content :global(tr:last-child td) {
-    border-bottom: none;
-  }
-
-  .page-content :global(tr:hover td) {
-    background: rgba(232, 125, 78, 0.05);
-  }
-
-  .page-content :global(strong) {
-    color: var(--text);
-  }
-
-  .page-content :global(a) {
+  .intro a {
     color: var(--accent);
     font-weight: 600;
   }
 
-  .page-content :global(a:hover) {
+  .intro a:hover {
     color: var(--primary);
   }
 
-  .page-content :global(ul), .page-content :global(ol) {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-  }
-
-  .page-content :global(li) {
-    margin-bottom: 0.5rem;
-  }
-
   @media (max-width: 768px) {
-    .page-content :global(table) {
-      font-size: 0.9rem;
+    .schedule-page {
+      padding: 1rem;
     }
 
-    .page-content :global(th),
-    .page-content :global(td) {
-      padding: 0.5rem;
-    }
-
-    .page-content :global(h1) {
+    .schedule-page > h1 {
       font-size: 2rem;
     }
   }

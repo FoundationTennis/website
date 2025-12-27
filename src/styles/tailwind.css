@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Brand Colors from brand-guidelines.md */
+  --color-primary: #E87D4E;        /* Sunset Coral - buttons, headers, CTAs */
+  --color-secondary: #F4A6B7;      /* Soft Blush - highlights, accents */
+  --color-accent: #6BB3D9;         /* Horizon Blue - links, cool balance */
+
+  /* Neutral Colors */
+  --color-background: #F5F2EB;     /* Natural Cream - page backgrounds */
+  --color-text: #2C3E50;           /* Deep Charcoal - body text */
+
+  /* Program Colors (Tennis Australia) */
+  --color-program-red: #E74C3C;
+  --color-program-orange: #F39C12;
+  --color-program-green: #27AE60;
+  --color-program-yellow: #F1C40F;
+  --color-program-blue: #3498DB;
+
+  /* Spacing */
+  --spacing-section: 4rem;
+
+  /* Border Radius */
+  --radius-card: 0.5rem;
+  --radius-button: 0.5rem;
+}
