@@ -4,4 +4,4 @@
 
 [build.environment]
   NODE_VERSION = "18"
-  PUBLIC_BOOKING_API_URL = "https://api.book.foundationtennis.au/api"
+  PUBLIC_BOOKING_API_URL = "https://web-production-258dd.up.railway.app/api"
