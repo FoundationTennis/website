@@ -1,6 +1,6 @@
 ---
 name: Maxim Paskalutsa
-title: Head Coach and Founder
+title: Head Coach
 qualifications:
   - Tennis Australia Junior Development Coach
   - Working with Children Check
@@ -8,9 +8,9 @@ qualifications:
 photo: placeholder
 date: 25-Dec-2025
 metaTitle: Maxim Paskalutsa | Tennis Coach Somerton Park Adelaide
-metaDescription: Meet Maxim, Head Coach at Foundation Tennis with 15 years experience. Qualified Tennis Australia coach helping kids develop in Somerton Park.
+metaDescription: Meet Maxim, Head Coach at Foundation Tennis Development with 15 years experience. Qualified Tennis Australia coach helping kids develop in Somerton Park.
 ogTitle: Maxim Paskalutsa | Tennis Coach Somerton Park Adelaide
-ogDescription: Meet Maxim, Head Coach at Foundation Tennis with 15 years experience. Qualified Tennis Australia coach helping kids develop in Somerton Park.
+ogDescription: Meet Maxim, Head Coach at Foundation Tennis Development with 15 years experience. Qualified Tennis Australia coach helping kids develop in Somerton Park.
 keywords:
   - tennis coach Somerton Park
   - Maxim Paskalutsa tennis
@@ -21,7 +21,7 @@ keywords:
 
 # Maxim Paskalutsa
 
-Maxim is the Head Coach and Founder of Foundation Tennis, bringing 15 years of coaching experience to players of all ages. He started coaching at 15, took it seriously from 19, and has dedicated his career to helping kids discover tennis.
+Maxim is the Head Coach of Foundation Tennis Development, bringing 15 years of coaching experience to players of all ages.
 
 ## Coaching Philosophy
 
@@ -31,21 +31,15 @@ Maxim believes everything in tennis connects. His coaching addresses the whole p
 
 ## Tennis Background
 
-Maxim started playing tennis at age 6 and competed in tournaments from age 10. He currently plays at the top of Metro 1 with a UTR rating above 10.
+Maxim started playing tennis at age 6 and competed in tournaments from age 10. He currently plays at the top of Metro 1 with a 10+ UTR.
 
 His playing experience informs his coaching. He understands the challenges players face because he has faced them himself.
-
-## The Foundation Tennis Story
-
-Maxim joined Foundation Tennis in 2015, working alongside founder Jack Reader and the original team. Over time, he took on more responsibility, and today runs Foundation Tennis as Head Coach.
-
-The mission remains what it has always been: help kids fall in love with tennis.
 
 ## Qualifications
 
 - Tennis Australia Junior Development Coach
-- Working with Children Check (current)
-- First Aid Certificate (current)
+- Working with Children Check
+- First Aid Certificate
 
 ## Connect
 

@@ -261,6 +261,31 @@ const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 3px solid var(--primary);
+  }
+
+  .value-card:nth-child(2) {
+    border-top-color: var(--soft-blush);
+  }
+
+  .value-card:nth-child(2) h3 {
+    color: #d48a9a;
+  }
+
+  .value-card:nth-child(3) {
+    border-top-color: var(--horizon-blue);
+  }
+
+  .value-card:nth-child(3) h3 {
+    color: var(--horizon-blue);
+  }
+
+  .value-card:nth-child(4) {
+    border-top-color: var(--soft-blush);
+  }
+
+  .value-card:nth-child(4) h3 {
+    color: #d48a9a;
   }
 
   .value-card:hover {
@@ -320,7 +345,7 @@ const groupPrograms = programs.filter(p => p.id.startsWith('groups/'));
   }
 
   .trust-section {
-    background: white;
+    background: linear-gradient(135deg, rgba(107, 179, 217, 0.1) 0%, rgba(244, 166, 183, 0.1) 100%);
     border-radius: 8px;
     margin: 2rem auto;
     text-align: center;

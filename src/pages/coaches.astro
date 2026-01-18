@@ -57,6 +57,18 @@ const coaches = await getCollection('coaches');
     padding: 3rem 2rem;
   }
 
+  /* Pink-tinted header section */
+  .coaches-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: linear-gradient(180deg, rgba(244, 166, 183, 0.15) 0%, transparent 100%);
+    z-index: -1;
+  }
+
   h1 {
     font-size: 2.5rem;
     color: var(--primary);
@@ -83,6 +95,11 @@ const coaches = await getCollection('coaches');
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--soft-blush);
+  }
+
+  .coach-card:nth-child(even) {
+    border-left-color: var(--horizon-blue);
   }
 
   .coach-photo {

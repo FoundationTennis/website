@@ -15,6 +15,17 @@ const otherPrograms = allPrograms.filter(p => !p.id.startsWith('groups/') && !p.
     <h1>Our Programs</h1>
     <p class="intro">Designed around how kids actually learn. Every program builds skills through fun, challenge, and plenty of rallies.</p>
 
+    <!-- Schedule CTA Banner -->
+    <div class="schedule-cta-banner">
+      <div class="schedule-cta-content">
+        <div class="schedule-cta-text">
+          <h2>View Schedule & Book Online</h2>
+          <p>See all available sessions and book your spot directly</p>
+        </div>
+        <a href="/schedule" class="schedule-cta-button">View Schedule</a>
+      </div>
+    </div>
+
     <!-- Progression Pathway -->
     <section class="pathway-section">
       <h2>The Tennis Australia Pathway</h2>
@@ -70,7 +81,7 @@ const otherPrograms = allPrograms.filter(p => !p.id.startsWith('groups/') && !p.
       <p class="pathway-note">Not sure where your child fits? <a href="/contact">Book a trial</a> and we'll assess their level.</p>
     </section>
 
-    <section class="program-section">
+    <section id="groups" class="program-section">
       <h2>Group Lessons</h2>
       <p class="section-desc">8-week terms following the Tennis Australia pathway. Smaller courts and softer balls for younger players, progressing to full court tennis.</p>
 
@@ -155,8 +166,8 @@ const otherPrograms = allPrograms.filter(p => !p.id.startsWith('groups/') && !p.
       </div>
     </section>
 
-    <section class="program-section featured">
-      <h2>Development Package</h2>
+    <section id="development" class="program-section featured">
+      <h2>Development Squads</h2>
       <p class="section-desc">For players ready to take their tennis seriously. Our most comprehensive program.</p>
 
       <div class="development-card">
@@ -240,23 +251,25 @@ const otherPrograms = allPrograms.filter(p => !p.id.startsWith('groups/') && !p.
       </div>
     </section>
 
-    <section class="program-section">
+    <section id="private" class="program-section">
       <h2>Private Lessons</h2>
       <p class="section-desc">One-on-one coaching for players wanting focused technical work.</p>
 
       <div class="private-grid">
         <div class="coach-private">
-          <h3>Maxim (Head Coach)</h3>
+          <h3>Maxim</h3>
+          <p class="coach-title">Head Coach</p>
           <p class="price">$50 / 30 min</p>
           <p>Limited availability. Development players only.</p>
         </div>
         <div class="coach-private">
-          <h3>Zoe (Assistant Head Coach)</h3>
+          <h3>Zoe</h3>
+          <p class="coach-title">Senior Coach</p>
           <p class="price">$40 / 30 min</p>
           <p>TA Junior Development qualified.</p>
         </div>
         <div class="coach-private">
-          <h3>Sota / George</h3>
+          <h3>Junior Coaches</h3>
           <p class="price">$30 / 30 min</p>
           <p>Great for supplementing group training.</p>
         </div>
@@ -289,6 +302,56 @@ const otherPrograms = allPrograms.filter(p => !p.id.startsWith('groups/') && !p.
     font-size: 1.2rem;
     color: #666;
     margin-bottom: 2rem;
+  }
+
+  /* Schedule CTA Banner */
+  .schedule-cta-banner {
+    background: linear-gradient(135deg, var(--horizon-blue) 0%, var(--soft-blush) 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+  }
+
+  .schedule-cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .schedule-cta-text h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .schedule-cta-text p {
+    color: rgba(255,255,255,0.9);
+    margin: 0;
+  }
+
+  .schedule-cta-button {
+    background: white;
+    color: var(--text);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .schedule-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    .schedule-cta-content {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 
   /* Pathway Section */
@@ -525,6 +588,12 @@ const otherPrograms = allPrograms.filter(p => !p.id.startsWith('groups/') && !p.
     padding: 1.5rem;
     border-radius: 8px;
     text-align: center;
+  }
+
+  .coach-private .coach-title {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.25rem 0 0.5rem;
   }
 
   .coach-private .price {

@@ -31,7 +31,8 @@ For most beginners, we recommend starting with group lessons. The social environ
 
 ## Our Coaches
 
-### Maxim Paskalutsa - Head Coach
+### Maxim Paskalutsa
+**Head Coach**
 
 **$50 per 30 minutes**
 
@@ -39,13 +40,14 @@ Maxim brings 15 years of coaching experience and a deep understanding of player 
 
 *Note: Maxim's private lessons are limited to development players and availability is restricted.*
 
-### Zoe Patfull-Bulmer - Assistant Head Coach
+### Zoe Patfull-Bulmer
+**Senior Coach**
 
 **$40 per 30 minutes**
 
-Zoe holds her Tennis Australia Junior Development qualification. Having grown up at Foundation Tennis herself, she understands exactly what young players need.
+Zoe holds her Tennis Australia Junior Development qualification. Having grown up at Foundation Tennis Development herself, she understands exactly what young players need.
 
-### Sota / George - Coaches
+### Junior Coaches
 
 **$30 per 30 minutes**
 

@@ -45,9 +45,9 @@ Somerton Park SA 5044
 
 ### Coaching Hours
 
-**Weekdays:** 3pm - 9:30pm
+**Mon-Fri:** 3:30pm - 9:30pm
 
-**Weekends:** 8am - 6pm
+**Sat-Sun:** 8am - 6pm
 
 ## Find Us on Facebook
 

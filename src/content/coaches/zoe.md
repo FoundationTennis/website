@@ -1,6 +1,6 @@
 ---
 name: Zoe Patfull-Bulmer
-title: Assistant Head Coach and BLV Coordinator
+title: Senior Coach and BLV Coordinator
 qualifications:
   - Tennis Australia Junior Development Coach
   - Working with Children Check
@@ -8,20 +8,20 @@ qualifications:
 photo: placeholder
 date: 25-Dec-2025
 metaTitle: Zoe Patfull-Bulmer | Tennis Coach Adelaide
-metaDescription: Meet Zoe, Assistant Head Coach at Foundation Tennis. Qualified junior coach offering private lessons in Somerton Park from $40/30min.
+metaDescription: Meet Zoe, Senior Coach at Foundation Tennis Development. Qualified junior coach and BLV Coordinator in Somerton Park.
 ogTitle: Zoe Patfull-Bulmer | Tennis Coach Adelaide
-ogDescription: Meet Zoe, Assistant Head Coach at Foundation Tennis. Qualified junior coach offering private lessons in Somerton Park from $40/30min.
+ogDescription: Meet Zoe, Senior Coach at Foundation Tennis Development. Qualified junior coach and BLV Coordinator in Somerton Park.
 keywords:
   - tennis coach Adelaide
   - Zoe Patfull-Bulmer tennis
   - junior tennis instructor Somerton Park
   - BLV tennis coordinator
-  - private tennis lessons Adelaide
+  - Foundation Tennis coach
 ---
 
 # Zoe Patfull-Bulmer
 
-Zoe is the Assistant Head Coach at Foundation Tennis and our Blind and Low Vision (BLV) Coordinator. At 19, she balances university studies with her coaching career, bringing energy and passion to every lesson.
+Zoe is a Senior Coach at Foundation Tennis Development and our Blind and Low Vision (BLV) Coordinator. At 19, she balances university studies with her coaching career, bringing energy and passion to every lesson.
 
 ## Her Foundation Tennis Journey
 
@@ -42,15 +42,5 @@ Zoe coordinates our Blind and Low Vision tennis program, ensuring players with v
 ## Qualifications
 
 - Tennis Australia Junior Development Coach
-- Working with Children Check (current)
-- First Aid Certificate (current)
-
-## Private Lessons
-
-Zoe offers private lessons at $40 per 30 minutes. Her Junior Development qualification and personal experience make her an excellent coach for developing players.
-
-Contact us to book:
-
-**Phone:** 0431 368 752
-
-**Email:** foundationtennis@hotmail.com
+- Working with Children Check
+- First Aid Certificate
